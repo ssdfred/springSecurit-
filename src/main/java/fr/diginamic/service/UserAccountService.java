@@ -1,18 +1,15 @@
 package fr.diginamic.service;
 
-import java.util.Arrays;
 import java.util.List;
 
-import org.h2.api.UserToRolesMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import fr.diginamic.entities.UserAccount;
-import fr.diginamic.mappers.UserMapper;
+import fr.diginamic.mappers.UserAccountMapper;
 import fr.diginamic.repository.UserAccountRepository;
 import jakarta.annotation.PostConstruct;
 
@@ -24,7 +21,7 @@ public class UserAccountService {
 
     @Bean
     UserDetailsService userDetailsService(UserAccountRepository userAccountRepository, PasswordEncoder passwordEncoder) {
-    	return username -> UserMapper.toUserDetails(userAccountRepository.findByUsername(username));
+    	return username ->  UserAccountMapper.toUserDetails(userAccountRepository.findByUsername(username));
     }
     @Autowired
     public UserAccountService(UserAccountRepository userAccountRepository, PasswordEncoder passwordEncoder) {
@@ -32,6 +29,9 @@ public class UserAccountService {
 		this.passwordEncoder = passwordEncoder;
     }
     
+    public List<UserAccount> findAll() {
+        return userAccountRepository.findAll();
+    }
 
 
     public UserAccount findByUsername(String username) {
