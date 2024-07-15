@@ -1,0 +1,21 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "HelloApplication",
+            "request": "launch",
+            "mainClass": "fr.diginamic.HelloApplication",
+            "projectName": "hello"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-TraitementFichiersApplication<hello>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "fr.diginamic.TraitementFichiersApplication",
+            "projectName": "hello",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
